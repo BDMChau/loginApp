@@ -1,0 +1,44 @@
+<div class="register row" style="height: 100%; justify-content: center; align-items: center;">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">Sign Up</h1>
+      <% if(typeof errors != 'undefined') { %>
+      <% errors.forEach((err) => { %>
+      <div class="alert alert-danger">
+        <%= err.message %>
+      </div>
+      <div class="alert alert-danger">
+        <%= err.message2 %>
+      </div>
+      <% }) %>
+      <% } %>
+      <form action="/register" method="POST">
+        <div class="form-group">
+          <input type="name" id="name" name="name" class="form-control" placeholder="Name..."
+            value="<%= typeof name != 'undefined' ? name : '' %>" />
+        </div>
+
+        <div class="form-group">
+          <input type="email" id="email" name="email" class="form-control" placeholder="Your email..."
+            value="<%= typeof email != 'undefined' ? email : '' %>" />
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password..."
+            value="<%= typeof password != 'undefined' ? password : '' %>" />
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="password2" name="password2" class="form-control" placeholder="Re-enter Password..."
+            value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+        </div>
+
+        <button type="submit" class="btn-submit">
+          Submit
+        </button>
+      </form>
+      <p class="mt-3">Have An Account? <a href="/">Sign In</a></p>
+
+    </div>
+  </div>
+</div>

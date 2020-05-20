@@ -1,0 +1,74 @@
+.login .card {
+  border: none;
+  background-color: #0404040d;
+  box-shadow: 0 0 20px 2px #00000038;
+}
+
+.login h1 {
+  color: #00000094;
+}
+
+.login .form-group {
+  border: none;
+}
+
+.login input {
+  border: none;
+  border-radius: 2px;
+  background-color: #ffffff00;
+  color: #1e8794;
+  line-height: 30px;
+  font-size: 20px;
+  border-bottom: 1px solid #1e8794;
+}
+
+.login input:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: #ffffff54;
+  color: #1e8794;
+  transition: 0.2s;
+  border-bottom: 3px solid #1e8794;
+}
+
+.login .btn-submit {
+  width: 30%;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  background-color: #1e879480;
+  cursor: pointer;
+  font-weight: 500;
+  color: #1b4c52;
+  transition: 0.3s;
+}
+
+.login .btn-submit:hover {
+  background-color: #1e8794cf;
+}
+
+.login .btn-submit:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.login p {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 5px 0;
+}
+
+.login a {
+  color: #1e8794;
+  margin: 0px 15px 0px 0px;
+  text-decoration: none;
+}
+
+.login .icon {
+  display: flex;
+}
+
+.login img {
+    width: 30px;
+    cursor: pointer;
+}
