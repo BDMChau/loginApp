@@ -7,7 +7,6 @@ const passportConfig = function (passport) {
     passport.use(
         new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
             const user = userModel.findAll({
-                limit: 1,
                 raw: true,
                 plain: true,
                 where: {
@@ -41,7 +40,7 @@ const passportConfig = function (passport) {
 
 
         })
-        
+
     )
 
     ////////

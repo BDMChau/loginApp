@@ -7,6 +7,7 @@ const port = process.env.PORT || 4000;
 
 const expressLayouts = require('express-ejs-layouts');
 
+const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
@@ -16,6 +17,7 @@ const oauthGoogle = require('./config/oauthGoogle.config')(passport);
 const authFacebook = require('./config/authFacebook.config')(passport);
 const flashConfig = require('./config/flash.config');
 const authMiddleware = require('./middleware/auth.middleware');
+const keys = require('./keys')
 
 const indexRoute = require('./routes/index.route');
 const logRoute = require('./routes/log.route');
@@ -26,13 +28,16 @@ app.set('view engine', 'ejs');
 app.set('layout', 'layout');
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({extend: false}))
+app.use(express.urlencoded({ extend: false }))
+app.use(bodyParser.json());
+//////////
 
 app.use(session({
-    secret: 'anything',
-    resave: true,
-    saveUninitialized: true,
-  }))
+  secret: 'anything',
+  resave: true,
+  saveUninitialized: true,
+}));
+
 
 app.use(flash())
 app.use(flashConfig)
@@ -46,5 +51,5 @@ app.use('/user', authMiddleware, indexRoute);
 ///////////
 
 app.listen(port, () => {
-    console.log(`Server is running at port: ${port}`);
+  console.log(`Server is running at port: ${port}`);
 })
