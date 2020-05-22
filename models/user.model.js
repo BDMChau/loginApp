@@ -10,6 +10,9 @@ const user = db.define('user', /*Schema*/{
     googleid: {
         type: sequelize.STRING
     },
+    facebookid: {
+        type: sequelize.STRING
+    },
     name: {
         type: sequelize.STRING
     },

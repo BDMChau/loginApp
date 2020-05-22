@@ -1,5 +1,5 @@
-const userModel = require('../models/user.model');
 const FacebookStrategy = require('passport-facebook').Strategy;
+const userModel = require('../models/user.model');
 const keys = require('../keys')
 
 ////////
@@ -16,8 +16,22 @@ const authFacebook = function (passport) {
                     return done(null, false);
                 }
 
-               console.log(profile);
-               return done(null, profile);
+                const userFacebook = await userModel.findOrCreate({
+                    where: {
+                        facebookid: profile.id
+                    },
+                    defaults: {
+                        email: profile.emails[0].value,
+                        name: profile.name.familyName + ' ' + profile.name.givenName
+                    }
+
+                }).spread((user, created) => {
+                    if (created) {
+                        return done(null, user);
+                    } else {
+                        return done(null, user);
+                    }
+                })
 
             }
 

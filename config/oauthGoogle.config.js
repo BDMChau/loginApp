@@ -1,6 +1,7 @@
-const userModel = require('../models/user.model');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const userModel = require('../models/user.model');
 const keys = require('../keys')
+
 ////////
 const oauthGoogle = function (passport) {
     passport.use(
@@ -16,10 +17,11 @@ const oauthGoogle = function (passport) {
 
                 const userGoogle = await userModel.findOrCreate({
                     where: {
-                        email: profile.emails[0].value
+                        googleid: profile.id
                     },
                     defaults: {
-                        name: profile.name.familyName + ' ' + profile.name.givenName,
+                        email: profile.emails[0].value,
+                        name: profile.name.familyName + ' ' + profile.name.givenName
                     }
 
                 }).spread((user, created) => {
